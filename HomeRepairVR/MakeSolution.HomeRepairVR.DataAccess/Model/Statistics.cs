@@ -22,9 +22,9 @@ namespace MakeSolution.HomeRepairVR.DataAccess.Model
     
         public int StatisticsId { get; set; }
         public int UserActivityId { get; set; }
-        public System.TimeSpan StatisticTimeElapsed { get; set; }
+        public int StatisticTimeElapsed { get; set; }
         public System.DateTime DateCreate { get; set; }
-        public System.DateTime DateUpdate { get; set; }
+        public Nullable<System.DateTime> DateUpdate { get; set; }
     
         public virtual UserActivity UserActivity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
