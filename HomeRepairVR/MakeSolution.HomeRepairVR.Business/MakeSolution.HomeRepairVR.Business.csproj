@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,12 +52,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BaseBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MakeSolution.HomeRepairVR.DataAccess\MakeSolution.HomeRepairVR.DataAccess.csproj">
+      <Project>{55c47932-4a4c-476e-b2dc-d46f30d03f1e}</Project>
+      <Name>MakeSolution.HomeRepairVR.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MakeSolution.HomeRepairVR.Entity\MakeSolution.HomeRepairVR.Entity.csproj">
+      <Project>{52817216-8c07-44cf-a6d7-f76da7f6c0c0}</Project>
+      <Name>MakeSolution.HomeRepairVR.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MakeSolution.HomeRepairVR.Helper\MakeSolution.HomeRepairVR.Helper.csproj">
+      <Project>{7fc1ce51-bd3c-4292-93bf-ff6a3456a2c8}</Project>
+      <Name>MakeSolution.HomeRepairVR.Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

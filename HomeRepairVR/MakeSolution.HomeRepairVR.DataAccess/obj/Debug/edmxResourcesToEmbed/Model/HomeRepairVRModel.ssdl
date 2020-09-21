@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDHomeRepairVRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="ActivityId" />
+    </Key>
+    <Property Name="ActivityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivityName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ActivityTime" Type="int" Nullable="false" />
+    <Property Name="ActivityUrlPicture" Type="varchar(max)" Nullable="false" />
+    <Property Name="DateCreate" Type="datetime" Nullable="false" />
+    <Property Name="ActivityDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="DateUpdate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActivityMaterial">
+    <Key>
+      <PropertyRef Name="ActivityMaterialId" />
+    </Key>
+    <Property Name="ActivityMaterialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivityId" Type="int" Nullable="false" />
+    <Property Name="MaterialId" Type="int" Nullable="false" />
+    <Property Name="DateCreate" Type="datetime" Nullable="false" />
+    <Property Name="DateUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="MaterialId" />
+    </Key>
+    <Property Name="MaterialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaterialName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaterialDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="DateCreate" Type="datetime" Nullable="false" />
+    <Property Name="DateUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Statistics">
+    <Key>
+      <PropertyRef Name="StatisticsId" />
+    </Key>
+    <Property Name="StatisticsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserActivityId" Type="int" Nullable="false" />
+    <Property Name="StatisticTimeElapsed" Type="time" Precision="7" Nullable="false" />
+    <Property Name="DateCreate" Type="datetime" Nullable="false" />
+    <Property Name="DateUpdate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StatisticsDetail">
+    <Key>
+      <PropertyRef Name="StatisticDetailId" />
+    </Key>
+    <Property Name="StatisticDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatisticsId" Type="int" Nullable="false" />
+    <Property Name="StepId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="DateCreate" Type="datetime" Nullable="false" />
+    <Property Name="MaterialId" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Step">
+    <Key>
+      <PropertyRef Name="StepId" />
+    </Key>
+    <Property Name="StepId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StepName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="StepNumber" Type="int" Nullable="false" />
+    <Property Name="StepDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="StepTimeAverage" Type="int" Nullable="false" />
+    <Property Name="ActivityId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserUrlPicture" Type="varchar(max)" Nullable="false" />
+    <Property Name="DateCreate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="DateUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserActivity">
+    <Key>
+      <PropertyRef Name="UserActivityId" />
+    </Key>
+    <Property Name="UserActivityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivityId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="DateCreate" Type="datetime" Nullable="false" />
+    <Property Name="DateUpdate" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_ActivityMaterial_Activity">
+    <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+    <End Role="ActivityMaterial" Type="Self.ActivityMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="ActivityId" />
+      </Principal>
+      <Dependent Role="ActivityMaterial">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivityMaterial_Material">
+    <End Role="Material" Type="Self.Material" Multiplicity="1" />
+    <End Role="ActivityMaterial" Type="Self.ActivityMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="MaterialId" />
+      </Principal>
+      <Dependent Role="ActivityMaterial">
+        <PropertyRef Name="MaterialId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Statistics_UserActivity">
+    <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="1" />
+    <End Role="Statistics" Type="Self.Statistics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserActivity">
+        <PropertyRef Name="UserActivityId" />
+      </Principal>
+      <Dependent Role="Statistics">
+        <PropertyRef Name="UserActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StatisticsDetail_Material">
+    <End Role="Material" Type="Self.Material" Multiplicity="1" />
+    <End Role="StatisticsDetail" Type="Self.StatisticsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="MaterialId" />
+      </Principal>
+      <Dependent Role="StatisticsDetail">
+        <PropertyRef Name="MaterialId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StatisticsDetail_Statistics">
+    <End Role="Statistics" Type="Self.Statistics" Multiplicity="1" />
+    <End Role="StatisticsDetail" Type="Self.StatisticsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Statistics">
+        <PropertyRef Name="StatisticsId" />
+      </Principal>
+      <Dependent Role="StatisticsDetail">
+        <PropertyRef Name="StatisticsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StatisticsDetail_Step">
+    <End Role="Step" Type="Self.Step" Multiplicity="1" />
+    <End Role="StatisticsDetail" Type="Self.StatisticsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Step">
+        <PropertyRef Name="StepId" />
+      </Principal>
+      <Dependent Role="StatisticsDetail">
+        <PropertyRef Name="StepId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Step_Activity">
+    <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+    <End Role="Step" Type="Self.Step" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="ActivityId" />
+      </Principal>
+      <Dependent Role="Step">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserActivity_Activity">
+    <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+    <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="ActivityId" />
+      </Principal>
+      <Dependent Role="UserActivity">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserActivity_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserActivity">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDHomeRepairVRModelStoreContainer">
+    <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ActivityMaterial" EntityType="Self.ActivityMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Statistics" EntityType="Self.Statistics" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatisticsDetail" EntityType="Self.StatisticsDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Step" EntityType="Self.Step" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserActivity" EntityType="Self.UserActivity" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ActivityMaterial_Activity" Association="Self.FK_ActivityMaterial_Activity">
+      <End Role="Activity" EntitySet="Activity" />
+      <End Role="ActivityMaterial" EntitySet="ActivityMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivityMaterial_Material" Association="Self.FK_ActivityMaterial_Material">
+      <End Role="Material" EntitySet="Material" />
+      <End Role="ActivityMaterial" EntitySet="ActivityMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Statistics_UserActivity" Association="Self.FK_Statistics_UserActivity">
+      <End Role="UserActivity" EntitySet="UserActivity" />
+      <End Role="Statistics" EntitySet="Statistics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StatisticsDetail_Material" Association="Self.FK_StatisticsDetail_Material">
+      <End Role="Material" EntitySet="Material" />
+      <End Role="StatisticsDetail" EntitySet="StatisticsDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StatisticsDetail_Statistics" Association="Self.FK_StatisticsDetail_Statistics">
+      <End Role="Statistics" EntitySet="Statistics" />
+      <End Role="StatisticsDetail" EntitySet="StatisticsDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StatisticsDetail_Step" Association="Self.FK_StatisticsDetail_Step">
+      <End Role="Step" EntitySet="Step" />
+      <End Role="StatisticsDetail" EntitySet="StatisticsDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Step_Activity" Association="Self.FK_Step_Activity">
+      <End Role="Activity" EntitySet="Activity" />
+      <End Role="Step" EntitySet="Step" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserActivity_Activity" Association="Self.FK_UserActivity_Activity">
+      <End Role="Activity" EntitySet="Activity" />
+      <End Role="UserActivity" EntitySet="UserActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserActivity_User" Association="Self.FK_UserActivity_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserActivity" EntitySet="UserActivity" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

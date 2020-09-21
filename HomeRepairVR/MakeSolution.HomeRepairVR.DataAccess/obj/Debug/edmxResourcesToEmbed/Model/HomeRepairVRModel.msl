@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDHomeRepairVRModelStoreContainer" CdmEntityContainer="BDHomeRepairVREntities">
+    <EntitySetMapping Name="Activity">
+      <EntityTypeMapping TypeName="BDHomeRepairVRModel.Activity">
+        <MappingFragment StoreEntitySet="Activity">
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+          <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+          <ScalarProperty Name="ActivityTime" ColumnName="ActivityTime" />
+          <ScalarProperty Name="ActivityUrlPicture" ColumnName="ActivityUrlPicture" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="ActivityDescription" ColumnName="ActivityDescription" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActivityMaterial">
+      <EntityTypeMapping TypeName="BDHomeRepairVRModel.ActivityMaterial">
+        <MappingFragment StoreEntitySet="ActivityMaterial">
+          <ScalarProperty Name="ActivityMaterialId" ColumnName="ActivityMaterialId" />
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+          <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Material">
+      <EntityTypeMapping TypeName="BDHomeRepairVRModel.Material">
+        <MappingFragment StoreEntitySet="Material">
+          <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+          <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+          <ScalarProperty Name="MaterialDescription" ColumnName="MaterialDescription" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Statistics">
+      <EntityTypeMapping TypeName="BDHomeRepairVRModel.Statistics">
+        <MappingFragment StoreEntitySet="Statistics">
+          <ScalarProperty Name="StatisticsId" ColumnName="StatisticsId" />
+          <ScalarProperty Name="UserActivityId" ColumnName="UserActivityId" />
+          <ScalarProperty Name="StatisticTimeElapsed" ColumnName="StatisticTimeElapsed" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatisticsDetail">
+      <EntityTypeMapping TypeName="BDHomeRepairVRModel.StatisticsDetail">
+        <MappingFragment StoreEntitySet="StatisticsDetail">
+          <ScalarProperty Name="StatisticDetailId" ColumnName="StatisticDetailId" />
+          <ScalarProperty Name="StatisticsId" ColumnName="StatisticsId" />
+          <ScalarProperty Name="StepId" ColumnName="StepId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Step">
+      <EntityTypeMapping TypeName="BDHomeRepairVRModel.Step">
+        <MappingFragment StoreEntitySet="Step">
+          <ScalarProperty Name="StepId" ColumnName="StepId" />
+          <ScalarProperty Name="StepName" ColumnName="StepName" />
+          <ScalarProperty Name="StepNumber" ColumnName="StepNumber" />
+          <ScalarProperty Name="StepDescription" ColumnName="StepDescription" />
+          <ScalarProperty Name="StepTimeAverage" ColumnName="StepTimeAverage" />
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="BDHomeRepairVRModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserUrlPicture" ColumnName="UserUrlPicture" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserActivity">
+      <EntityTypeMapping TypeName="BDHomeRepairVRModel.UserActivity">
+        <MappingFragment StoreEntitySet="UserActivity">
+          <ScalarProperty Name="UserActivityId" ColumnName="UserActivityId" />
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

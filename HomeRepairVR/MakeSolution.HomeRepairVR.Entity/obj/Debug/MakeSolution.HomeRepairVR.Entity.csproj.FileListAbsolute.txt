@@ -1,0 +1,12 @@
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Entity\bin\Debug\MakeSolution.HomeRepairVR.Entity.dll.config
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Entity\bin\Debug\MakeSolution.HomeRepairVR.Entity.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Entity\bin\Debug\MakeSolution.HomeRepairVR.Entity.pdb
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Entity\bin\Debug\EntityFramework.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Entity\bin\Debug\EntityFramework.xml
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Entity\obj\Debug\MakeSolution.HomeRepairVR.Entity.csprojAssemblyReference.cache
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Entity\obj\Debug\MakeSolution.HomeRepairVR.Entity.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Entity\obj\Debug\MakeSolution.HomeRepairVR.Entity.csproj.CopyComplete
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Entity\obj\Debug\MakeSolution.HomeRepairVR.Entity.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Entity\obj\Debug\MakeSolution.HomeRepairVR.Entity.pdb

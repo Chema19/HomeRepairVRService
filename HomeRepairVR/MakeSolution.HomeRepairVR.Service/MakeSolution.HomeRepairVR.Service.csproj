@@ -248,6 +248,24 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MakeSolution.HomeRepairVR.Business\MakeSolution.HomeRepairVR.Business.csproj">
+      <Project>{eecec39e-0f91-4a26-84d2-ac812423c269}</Project>
+      <Name>MakeSolution.HomeRepairVR.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MakeSolution.HomeRepairVR.DataAccess\MakeSolution.HomeRepairVR.DataAccess.csproj">
+      <Project>{55c47932-4a4c-476e-b2dc-d46f30d03f1e}</Project>
+      <Name>MakeSolution.HomeRepairVR.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MakeSolution.HomeRepairVR.Entity\MakeSolution.HomeRepairVR.Entity.csproj">
+      <Project>{52817216-8c07-44cf-a6d7-f76da7f6c0c0}</Project>
+      <Name>MakeSolution.HomeRepairVR.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MakeSolution.HomeRepairVR.Helper\MakeSolution.HomeRepairVR.Helper.csproj">
+      <Project>{7fc1ce51-bd3c-4292-93bf-ff6a3456a2c8}</Project>
+      <Name>MakeSolution.HomeRepairVR.Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
