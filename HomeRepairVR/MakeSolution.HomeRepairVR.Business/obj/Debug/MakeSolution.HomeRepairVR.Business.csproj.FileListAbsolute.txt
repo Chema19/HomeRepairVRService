@@ -3,9 +3,11 @@ C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeS
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\MakeSolution.HomeRepairVR.Business.pdb
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\EntityFramework.dll
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\EntityFramework.SqlServerCompact.dll
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\MakeSolution.HomeRepairVR.DataAccess.dll
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\MakeSolution.HomeRepairVR.Entity.dll
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\MakeSolution.HomeRepairVR.Helper.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\System.Data.SqlServerCe.dll
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\MakeSolution.HomeRepairVR.DataAccess.pdb
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\MakeSolution.HomeRepairVR.DataAccess.dll.config
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\MakeSolution.HomeRepairVR.Entity.pdb
@@ -14,6 +16,7 @@ C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeS
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\MakeSolution.HomeRepairVR.Helper.dll.config
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\EntityFramework.xml
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\bin\Debug\EntityFramework.SqlServerCompact.xml
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\obj\Debug\MakeSolution.HomeRepairVR.Business.csprojAssemblyReference.cache
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\obj\Debug\MakeSolution.HomeRepairVR.Business.csproj.CoreCompileInputs.cache
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Business\obj\Debug\MakeSolution.HomeRepairVR.Business.csproj.CopyComplete

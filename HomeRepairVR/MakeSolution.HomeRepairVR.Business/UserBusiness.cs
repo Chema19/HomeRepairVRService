@@ -118,5 +118,38 @@ namespace MakeSolution.HomeRepairVR.Business
             }
             return response;
         }
+
+        public ResponseEntity<List<UserEntity>> ListUser()
+        {
+            ResponseEntity<List<UserEntity>> response = new ResponseEntity<List<UserEntity>>();
+            try
+            {
+                var listUsers = new List<UserEntity>();
+                using (var ts = new TransactionScope())
+                {
+                    listUsers = Context.User.Where(x => x.Status == ConstantHelper.ESTADO.ACTIVO)
+                        .Select(x => new UserEntity {
+                            UserId = x.UserId,
+                            UserName = x.UserName,
+                            UserUrlPicture = x.UserUrlPicture,
+                            DateCreate = x.DateCreate,
+                            Status = x.Status
+                      }).ToList();
+
+
+                    ts.Complete();
+                }
+                response.Data = listUsers;
+                response.Error = false;
+                response.Message = "SUCCESS";
+            }
+            catch (Exception ex)
+            {
+                response.Data = null;
+                response.Error = true;
+                response.Message = "ERROR: " + ex.Message;
+            }
+            return response;
+        }
     }
 }

@@ -1,0 +1,12 @@
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.DataAccess\bin\Release\MakeSolution.HomeRepairVR.DataAccess.dll.config
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.DataAccess\bin\Release\MakeSolution.HomeRepairVR.DataAccess.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.DataAccess\bin\Release\MakeSolution.HomeRepairVR.DataAccess.pdb
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.DataAccess\bin\Release\EntityFramework.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.DataAccess\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.DataAccess\bin\Release\EntityFramework.xml
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.DataAccess\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.DataAccess\obj\Release\MakeSolution.HomeRepairVR.DataAccess.csprojAssemblyReference.cache
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.DataAccess\obj\Release\MakeSolution.HomeRepairVR.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.DataAccess\obj\Release\MakeSolution.HomeRepairVR.DataAccess.csproj.CopyComplete
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.DataAccess\obj\Release\MakeSolution.HomeRepairVR.DataAccess.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.DataAccess\obj\Release\MakeSolution.HomeRepairVR.DataAccess.pdb

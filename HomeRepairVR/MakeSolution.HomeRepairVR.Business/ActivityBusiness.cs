@@ -78,5 +78,38 @@ namespace MakeSolution.HomeRepairVR.Business
             }
             return response;
         }
+        
+        public ResponseEntity<ActivityEntity> DetailActivity(Int32? ActivityId)
+        {
+            ResponseEntity<ActivityEntity> response = new ResponseEntity<ActivityEntity>();
+            try
+            {
+                ActivityEntity Activity = new ActivityEntity();
+                using (var ts = new TransactionScope())
+                {
+                    Activity = Context.Activity.Where(x=>x.ActivityId == ActivityId).Select(x => new ActivityEntity
+                    {
+                        ActivityId = x.ActivityId,
+                        ActivityName = x.ActivityName,
+                        ActivityTime = x.ActivityTime,
+                        ActivityUrlPicture = x.ActivityUrlPicture,
+                        ActivityDescription = x.ActivityDescription,
+                        DateCreate = x.DateCreate,
+                        DateUpdate = x.DateUpdate,
+                    }).FirstOrDefault();
+                    ts.Complete();
+                }
+                response.Data = Activity;
+                response.Error = false;
+                response.Message = "SUCCESS";
+            }
+            catch (Exception ex)
+            {
+                response.Data = null;
+                response.Error = true;
+                response.Message = "ERROR: " + ex.Message;
+            }
+            return response;
+        }
     }
 }
