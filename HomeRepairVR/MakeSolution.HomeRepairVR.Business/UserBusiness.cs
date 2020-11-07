@@ -33,11 +33,13 @@ namespace MakeSolution.HomeRepairVR.Business
                     }
 
                     user.UserName = model.UserName;
-                    if (!String.IsNullOrEmpty(model.UserUrlPicture))
-                    {
-                        user.UserUrlPicture = "";
-                    }
-                   
+                    user.UserUrlPicture = "https://www.iconfinder.com/data/icons/avatar-2-2/512/Programmer-512.png";
+                
+                      //if (!String.IsNullOrEmpty(model.UserUrlPicture))
+                      //{
+                      //    user.UserUrlPicture = "";
+                      //}
+
                     user.Status = ConstantHelper.ESTADO.ACTIVO;
 
                     Context.SaveChanges();

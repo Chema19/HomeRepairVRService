@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Activity">
       <EntityTypeMapping TypeName="BDHomeRepairVRModel.Activity">
         <MappingFragment StoreEntitySet="Activity">
+          <ScalarProperty Name="Scene" ColumnName="Scene" />
           <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
           <ScalarProperty Name="ActivityDescription" ColumnName="ActivityDescription" />
           <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />

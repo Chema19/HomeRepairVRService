@@ -16,6 +16,7 @@
           <Property Name="DateCreate" Type="datetime" Nullable="false" />
           <Property Name="ActivityDescription" Type="varchar(max)" Nullable="false" />
           <Property Name="DateUpdate" Type="datetime" Nullable="false" />
+          <Property Name="Scene" Type="int" />
         </EntityType>
         <EntityType Name="ActivityMaterial">
           <Key>
@@ -306,6 +307,7 @@
           <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ActivityDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DateUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Scene" Type="Int32" />
           <NavigationProperty Name="ActivityMaterial" Relationship="BDHomeRepairVRModel.FK_ActivityMaterial_Activity" FromRole="Activity" ToRole="ActivityMaterial" />
           <NavigationProperty Name="Step" Relationship="BDHomeRepairVRModel.FK_Step_Activity" FromRole="Activity" ToRole="Step" />
           <NavigationProperty Name="UserActivity" Relationship="BDHomeRepairVRModel.FK_UserActivity_Activity" FromRole="Activity" ToRole="UserActivity" />
@@ -507,7 +509,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -516,6 +518,7 @@
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="BDHomeRepairVRModel.Activity">
               <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="Scene" ColumnName="Scene" />
                 <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
                 <ScalarProperty Name="ActivityDescription" ColumnName="ActivityDescription" />
                 <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />

@@ -29,6 +29,7 @@ namespace MakeSolution.HomeRepairVR.DataAccess.Model
         public System.DateTime DateCreate { get; set; }
         public string ActivityDescription { get; set; }
         public System.DateTime DateUpdate { get; set; }
+        public Nullable<int> Scene { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ActivityMaterial> ActivityMaterial { get; set; }

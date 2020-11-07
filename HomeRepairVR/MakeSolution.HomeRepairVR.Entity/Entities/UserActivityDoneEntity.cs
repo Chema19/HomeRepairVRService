@@ -16,5 +16,6 @@ namespace MakeSolution.HomeRepairVR.Entity.Entities
         public DateTime? DateCreate { set; get; }
         public String ActivityDescription { set; get; }
         public DateTime? DateUpdate { set; get; }
+        public int? Scene { set; get; }
     }
 }

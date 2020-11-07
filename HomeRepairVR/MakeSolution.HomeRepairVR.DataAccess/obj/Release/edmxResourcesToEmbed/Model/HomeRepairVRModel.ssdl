@@ -11,6 +11,7 @@
     <Property Name="DateCreate" Type="datetime" Nullable="false" />
     <Property Name="ActivityDescription" Type="varchar(max)" Nullable="false" />
     <Property Name="DateUpdate" Type="datetime" Nullable="false" />
+    <Property Name="Scene" Type="int" />
   </EntityType>
   <EntityType Name="ActivityMaterial">
     <Key>

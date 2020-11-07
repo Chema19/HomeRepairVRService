@@ -30,6 +30,7 @@ namespace MakeSolution.HomeRepairVR.Business
                         ActivityDescription = x.ActivityDescription,
                         DateCreate = x.DateCreate,
                         DateUpdate = x.DateUpdate,
+                        Scene = x.Scene
                     }).ToList();
                     ts.Complete();
                 }
@@ -63,6 +64,7 @@ namespace MakeSolution.HomeRepairVR.Business
                         ActivityDescription = x.Activity.ActivityDescription,
                         DateCreate = x.DateCreate,
                         DateUpdate = x.DateUpdate,
+                        Scene = x.Activity.Scene
                     }).ToList();
                     ts.Complete();
                 }
@@ -96,6 +98,7 @@ namespace MakeSolution.HomeRepairVR.Business
                         ActivityDescription = x.ActivityDescription,
                         DateCreate = x.DateCreate,
                         DateUpdate = x.DateUpdate,
+                        Scene = x.Scene
                     }).FirstOrDefault();
                     ts.Complete();
                 }

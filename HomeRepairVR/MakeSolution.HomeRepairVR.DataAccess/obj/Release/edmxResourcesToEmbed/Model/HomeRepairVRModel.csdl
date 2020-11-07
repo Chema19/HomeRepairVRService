@@ -57,6 +57,7 @@
     <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ActivityDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="DateUpdate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Scene" Type="Int32" />
     <NavigationProperty Name="ActivityMaterial" Relationship="BDHomeRepairVRModel.FK_ActivityMaterial_Activity" FromRole="Activity" ToRole="ActivityMaterial" />
     <NavigationProperty Name="Step" Relationship="BDHomeRepairVRModel.FK_Step_Activity" FromRole="Activity" ToRole="Step" />
     <NavigationProperty Name="UserActivity" Relationship="BDHomeRepairVRModel.FK_UserActivity_Activity" FromRole="Activity" ToRole="UserActivity" />
