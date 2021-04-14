@@ -58,5 +58,20 @@ namespace MakeSolution.HomeRepairVR.Service.Controllers
                 return Unauthorized();
             }
         }
+        [HttpGet]
+        [Route("statisticsactivities/{activityid}/users/{userid}")]
+        public IHttpActionResult StatistisActivities(int? activityid, int? userid)
+        {
+            try
+            {
+                ActivityBusiness activityBusiness = new ActivityBusiness();
+                ResponseEntity<StatisticsEntity> response = activityBusiness.StatisticsActivity(userid, activityid);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized();
+            }
+        }
     }
 }

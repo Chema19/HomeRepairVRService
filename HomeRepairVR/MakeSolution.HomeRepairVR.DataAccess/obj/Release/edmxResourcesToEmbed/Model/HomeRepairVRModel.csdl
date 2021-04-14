@@ -7,6 +7,7 @@
     <EntitySet Name="Statistics" EntityType="BDHomeRepairVRModel.Statistics" />
     <EntitySet Name="StatisticsDetail" EntityType="BDHomeRepairVRModel.StatisticsDetail" />
     <EntitySet Name="Step" EntityType="BDHomeRepairVRModel.Step" />
+    <EntitySet Name="sysdiagrams" EntityType="BDHomeRepairVRModel.sysdiagrams" />
     <EntitySet Name="User" EntityType="BDHomeRepairVRModel.User" />
     <EntitySet Name="UserActivity" EntityType="BDHomeRepairVRModel.UserActivity" />
     <AssociationSet Name="FK_ActivityMaterial_Activity" Association="BDHomeRepairVRModel.FK_ActivityMaterial_Activity">
@@ -24,10 +25,6 @@
     <AssociationSet Name="FK_ActivityMaterial_Material" Association="BDHomeRepairVRModel.FK_ActivityMaterial_Material">
       <End Role="Material" EntitySet="Material" />
       <End Role="ActivityMaterial" EntitySet="ActivityMaterial" />
-    </AssociationSet>
-    <AssociationSet Name="FK_StatisticsDetail_Material" Association="BDHomeRepairVRModel.FK_StatisticsDetail_Material">
-      <End Role="Material" EntitySet="Material" />
-      <End Role="StatisticsDetail" EntitySet="StatisticsDetail" />
     </AssociationSet>
     <AssociationSet Name="FK_Statistics_UserActivity" Association="BDHomeRepairVRModel.FK_Statistics_UserActivity">
       <End Role="UserActivity" EntitySet="UserActivity" />
@@ -84,7 +81,6 @@
     <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="DateUpdate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="ActivityMaterial" Relationship="BDHomeRepairVRModel.FK_ActivityMaterial_Material" FromRole="Material" ToRole="ActivityMaterial" />
-    <NavigationProperty Name="StatisticsDetail" Relationship="BDHomeRepairVRModel.FK_StatisticsDetail_Material" FromRole="Material" ToRole="StatisticsDetail" />
   </EntityType>
   <EntityType Name="Statistics">
     <Key>
@@ -107,9 +103,7 @@
     <Property Name="StepId" Type="Int32" Nullable="false" />
     <Property Name="Status" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
     <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="MaterialId" Type="Int32" Nullable="false" />
-    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Material" Relationship="BDHomeRepairVRModel.FK_StatisticsDetail_Material" FromRole="StatisticsDetail" ToRole="Material" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Statistics" Relationship="BDHomeRepairVRModel.FK_StatisticsDetail_Statistics" FromRole="StatisticsDetail" ToRole="Statistics" />
     <NavigationProperty Name="Step" Relationship="BDHomeRepairVRModel.FK_StatisticsDetail_Step" FromRole="StatisticsDetail" ToRole="Step" />
   </EntityType>
@@ -125,6 +119,16 @@
     <Property Name="ActivityId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Activity" Relationship="BDHomeRepairVRModel.FK_Step_Activity" FromRole="Step" ToRole="Activity" />
     <NavigationProperty Name="StatisticsDetail" Relationship="BDHomeRepairVRModel.FK_StatisticsDetail_Step" FromRole="Step" ToRole="StatisticsDetail" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -195,18 +199,6 @@
         <PropertyRef Name="MaterialId" />
       </Principal>
       <Dependent Role="ActivityMaterial">
-        <PropertyRef Name="MaterialId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_StatisticsDetail_Material">
-    <End Type="BDHomeRepairVRModel.Material" Role="Material" Multiplicity="1" />
-    <End Type="BDHomeRepairVRModel.StatisticsDetail" Role="StatisticsDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Material">
-        <PropertyRef Name="MaterialId" />
-      </Principal>
-      <Dependent Role="StatisticsDetail">
         <PropertyRef Name="MaterialId" />
       </Dependent>
     </ReferentialConstraint>

@@ -17,6 +17,7 @@ namespace MakeSolution.HomeRepairVR.Helper
         {
             public const String SUCCESS_MESSAGE_SAVE = "Datos guardados correctamente";
             public const String SUCCESS_MESSAGE_DELETE = "Datos eliminados correctamente";
+            public const String SUCCESS_MESSAGE_CHARGE = "Datos cargados correctamento";
         }
     }
 }

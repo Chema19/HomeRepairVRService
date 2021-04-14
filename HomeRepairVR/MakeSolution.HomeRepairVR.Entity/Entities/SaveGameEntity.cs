@@ -9,7 +9,6 @@ namespace MakeSolution.HomeRepairVR.Entity.Entities
     public class SaveGameEntity
     {
         public Int32 UserActivityId { set; get; }
-        public Int32 MaterialId { set; get; }
         public Int32 StepId { set; get; }
         public String Description { set; get; }
         public String Status { set; get; }

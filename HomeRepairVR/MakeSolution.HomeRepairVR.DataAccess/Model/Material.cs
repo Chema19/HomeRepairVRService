@@ -18,7 +18,6 @@ namespace MakeSolution.HomeRepairVR.DataAccess.Model
         public Material()
         {
             this.ActivityMaterial = new HashSet<ActivityMaterial>();
-            this.StatisticsDetail = new HashSet<StatisticsDetail>();
         }
     
         public int MaterialId { get; set; }
@@ -29,7 +28,5 @@ namespace MakeSolution.HomeRepairVR.DataAccess.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ActivityMaterial> ActivityMaterial { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StatisticsDetail> StatisticsDetail { get; set; }
     }
 }

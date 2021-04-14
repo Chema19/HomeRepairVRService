@@ -4,6 +4,7 @@ using MakeSolution.HomeRepairVR.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -80,7 +81,6 @@ namespace MakeSolution.HomeRepairVR.Business
             }
             return response;
         }
-        
         public ResponseEntity<ActivityEntity> DetailActivity(Int32? ActivityId)
         {
             ResponseEntity<ActivityEntity> response = new ResponseEntity<ActivityEntity>();
@@ -114,5 +114,37 @@ namespace MakeSolution.HomeRepairVR.Business
             }
             return response;
         }
+        public ResponseEntity<StatisticsEntity> StatisticsActivity(Int32? UsuarioId, Int32? ActivityId)
+        {
+            ResponseEntity<StatisticsEntity> response = new ResponseEntity<StatisticsEntity>();
+            try
+            {
+                StatisticsEntity statisticsEntity = new StatisticsEntity();
+                using (var ts = new TransactionScope())
+                {
+                    var userActivity = Context.UserActivity.FirstOrDefault(x => x.UserId == UsuarioId && x.ActivityId == ActivityId);
+                    var statistics = Context.Statistics.FirstOrDefault(x => x.UserActivityId == userActivity.UserActivityId);
+        
+                    statisticsEntity.Foto = userActivity.Activity.ActivityUrlPicture;
+                    statisticsEntity.Titulo = userActivity.Activity.ActivityName;
+                    statisticsEntity.Correctas = Context.StatisticsDetail.Where(x=>x.StatisticsId == statistics.StatisticsId && x.Status == "COR").Count();
+                    statisticsEntity.Incorrectas = Context.StatisticsDetail.Where(x => x.StatisticsId == statistics.StatisticsId && x.Status == "ERR").Count(); ;
+                    statisticsEntity.TiempoTranscurrido = Context.Statistics.FirstOrDefault(x=>x.UserActivityId == userActivity.UserActivityId).StatisticTimeElapsed;
+                    statisticsEntity.Pasos = Context.StatisticsDetail.OrderByDescending(x => x.StatisticDetailId).FirstOrDefault(x => x.StatisticsId == statistics.StatisticsId) != null ? Context.StatisticsDetail.OrderByDescending(x=>x.StatisticDetailId).FirstOrDefault(x => x.StatisticsId == statistics.StatisticsId).Step.StepName : "-";
+                    ts.Complete();
+                }
+                response.Data = statisticsEntity;
+                response.Error = false;
+                response.Message = "SUCCESS";
+            }
+            catch (Exception ex)
+            {
+                response.Data = null;
+                response.Error = true;
+                response.Message = "ERROR: " + ex.Message;
+            }
+            return response;
+        }
+        
     }
 }

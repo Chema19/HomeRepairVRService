@@ -54,6 +54,8 @@
     <Compile Include="Entities\ActivityEntity.cs" />
     <Compile Include="Entities\ResponseEntity.cs" />
     <Compile Include="Entities\SaveGameEntity.cs" />
+    <Compile Include="Entities\SelectGameResponseEntity.cs" />
+    <Compile Include="Entities\StatisticsEntity.cs" />
     <Compile Include="Entities\StepEntity.cs" />
     <Compile Include="Entities\UserActivityDoneEntity.cs" />
     <Compile Include="Entities\UserActivityEntity.cs" />
