@@ -10,3 +10,15 @@ C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeS
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Debug\MakeSolution.HomeRepairVR.Helper.csproj.CopyComplete
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Debug\MakeSolution.HomeRepairVR.Helper.dll
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Debug\MakeSolution.HomeRepairVR.Helper.pdb
+C:\Users\Val\Desktop\HRVR\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Debug\MakeSolution.HomeRepairVR.Helper.dll.config
+C:\Users\Val\Desktop\HRVR\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Debug\MakeSolution.HomeRepairVR.Helper.dll
+C:\Users\Val\Desktop\HRVR\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Debug\MakeSolution.HomeRepairVR.Helper.pdb
+C:\Users\Val\Desktop\HRVR\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Debug\EntityFramework.dll
+C:\Users\Val\Desktop\HRVR\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Val\Desktop\HRVR\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Debug\EntityFramework.xml
+C:\Users\Val\Desktop\HRVR\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Val\Desktop\HRVR\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Debug\MakeSolution.HomeRepairVR.Helper.csprojAssemblyReference.cache
+C:\Users\Val\Desktop\HRVR\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Debug\MakeSolution.HomeRepairVR.Helper.csproj.CoreCompileInputs.cache
+C:\Users\Val\Desktop\HRVR\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Debug\MakeSolution.HomeRepairVR.Helper.csproj.CopyComplete
+C:\Users\Val\Desktop\HRVR\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Debug\MakeSolution.HomeRepairVR.Helper.dll
+C:\Users\Val\Desktop\HRVR\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Debug\MakeSolution.HomeRepairVR.Helper.pdb

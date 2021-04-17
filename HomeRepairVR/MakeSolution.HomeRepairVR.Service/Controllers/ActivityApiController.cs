@@ -73,5 +73,36 @@ namespace MakeSolution.HomeRepairVR.Service.Controllers
                 return Unauthorized();
             }
         }
+        [HttpGet]
+        [Route("liststatisticsactivities/{activityId}/users/{usuarioId}")]
+        public IHttpActionResult ListStatistics(int? usuarioId, int? activityId)
+        {
+            try
+            {
+                ActivityBusiness activityBussiness = new ActivityBusiness();
+                ResponseEntity<List<StatisticsEntity>> response = activityBussiness.ListStatistics(usuarioId, activityId);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized();
+            }
+        }
+        [HttpGet]
+        [Route("liststatisticsdetail/{statisticsId}")]
+        public IHttpActionResult ListStatisticsDetail(int? statisticsId)
+        {
+            try
+            {
+                ActivityBusiness activityBussiness = new ActivityBusiness();
+                ResponseEntity<List<StatisticDetailEntity>> response = activityBussiness.ListStatisticsDetail(statisticsId);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized();
+            }
+        }
+
     }
 }

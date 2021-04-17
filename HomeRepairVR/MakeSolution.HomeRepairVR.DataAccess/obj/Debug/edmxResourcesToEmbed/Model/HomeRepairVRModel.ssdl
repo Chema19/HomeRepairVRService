@@ -42,6 +42,7 @@
     <Property Name="StatisticTimeElapsed" Type="int" Nullable="false" />
     <Property Name="DateCreate" Type="datetime" Nullable="false" />
     <Property Name="DateUpdate" Type="datetime" />
+    <Property Name="ProjectNameSaved" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="StatisticsDetail">
     <Key>
@@ -49,10 +50,14 @@
     </Key>
     <Property Name="StatisticDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StatisticsId" Type="int" Nullable="false" />
-    <Property Name="StepId" Type="int" Nullable="false" />
+    <Property Name="StepId" Type="int" />
     <Property Name="Status" Type="varchar" MaxLength="3" Nullable="false" />
     <Property Name="DateCreate" Type="datetime" Nullable="false" />
-    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="StatisticTimeElapsed" Type="int" Nullable="false" />
+    <Property Name="StepsCorrects" Type="int" />
+    <Property Name="StepsIncorrects" Type="int" />
+    <Property Name="StatusActivity" Type="varchar" MaxLength="3" Nullable="false" />
   </EntityType>
   <EntityType Name="Step">
     <Key>
@@ -64,16 +69,6 @@
     <Property Name="StepDescription" Type="varchar(max)" Nullable="false" />
     <Property Name="StepTimeAverage" Type="int" Nullable="false" />
     <Property Name="ActivityId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -145,7 +140,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_StatisticsDetail_Step">
-    <End Role="Step" Type="Self.Step" Multiplicity="1" />
+    <End Role="Step" Type="Self.Step" Multiplicity="0..1" />
     <End Role="StatisticsDetail" Type="Self.StatisticsDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Step">
@@ -199,7 +194,6 @@
     <EntitySet Name="Statistics" EntityType="Self.Statistics" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StatisticsDetail" EntityType="Self.StatisticsDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Step" EntityType="Self.Step" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserActivity" EntityType="Self.UserActivity" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ActivityMaterial_Activity" Association="Self.FK_ActivityMaterial_Activity">

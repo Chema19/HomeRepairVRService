@@ -16,10 +16,14 @@ namespace MakeSolution.HomeRepairVR.DataAccess.Model
     {
         public int StatisticDetailId { get; set; }
         public int StatisticsId { get; set; }
-        public int StepId { get; set; }
+        public Nullable<int> StepId { get; set; }
         public string Status { get; set; }
         public System.DateTime DateCreate { get; set; }
         public string Description { get; set; }
+        public int StatisticTimeElapsed { get; set; }
+        public Nullable<int> StepsCorrects { get; set; }
+        public Nullable<int> StepsIncorrects { get; set; }
+        public string StatusActivity { get; set; }
     
         public virtual Statistics Statistics { get; set; }
         public virtual Step Step { get; set; }

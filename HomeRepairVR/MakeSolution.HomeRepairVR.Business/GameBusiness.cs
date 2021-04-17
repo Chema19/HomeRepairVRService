@@ -14,7 +14,7 @@ namespace MakeSolution.HomeRepairVR.Business
 {
     public class GameBusiness : BaseBusiness
     {
-        public ResponseEntity<String> SaveGame(SaveGameEntity model)
+        public ResponseEntity<String> SaveGame(SaveLoadGameEntity model)
         {
             ResponseEntity<String> response = new ResponseEntity<String>();
             try
@@ -34,7 +34,9 @@ namespace MakeSolution.HomeRepairVR.Business
                     statisticsDetail.StatisticsId = statistics.StatisticsId;
                     statisticsDetail.DateCreate = DateTime.Now;
                     statisticsDetail.Description = model.Description;
-
+                    statisticsDetail.StepsCorrects = model.CorrectSteps;
+                    statisticsDetail.StepsIncorrects = model.WrongSteps;
+                    statisticsDetail.StatusActivity = model.StatusActivity;
                     Context.SaveChanges();
                     ts.Complete();
                 }
@@ -80,15 +82,15 @@ namespace MakeSolution.HomeRepairVR.Business
                         statistic.DateCreate = DateTime.Now;
 
                         Context.SaveChanges();
-                       
+
                         selectGameResponse.UserActivityId = userActivity.UserActivityId;
                         selectGameResponse.Message = ConstantHelper.MESSAGE.SUCCESS_MESSAGE_SAVE;
 
                         response.Data = selectGameResponse;
                     }
-                    else { 
+                    else {
                         selectGameResponse.UserActivityId = userActivyExist.UserActivityId;
-                        selectGameResponse.Message = ConstantHelper.MESSAGE.SUCCESS_MESSAGE_CHARGE; 
+                        selectGameResponse.Message = ConstantHelper.MESSAGE.SUCCESS_MESSAGE_CHARGE;
                     }
                     ts.Complete();
                 }
@@ -104,14 +106,14 @@ namespace MakeSolution.HomeRepairVR.Business
             }
             return response;
         }
-        public ResponseEntity<String> ChargeDoneGame(int useractivityid)
+        public ResponseEntity<SaveLoadGameEntity> ChargeDoneGame(int useractivityid)
         {
-            ResponseEntity<String> response = new ResponseEntity<String>();
+            ResponseEntity<SaveLoadGameEntity> response = new ResponseEntity<SaveLoadGameEntity>();
             try
             {
                 using (var ts = new TransactionScope())
                 {
-                    response.Data = Context.StatisticsDetail.OrderByDescending(x => x.StatisticDetailId).FirstOrDefault(x => x.Statistics.UserActivityId == useractivityid) != null ? Context.StatisticsDetail.OrderByDescending(x => x.StatisticDetailId).FirstOrDefault(x => x.Statistics.UserActivityId == useractivityid).Description : "";
+                    response.Data = Context.StatisticsDetail.OrderByDescending(x => x.StatisticDetailId).Select(x => new SaveLoadGameEntity { UserActivityId = x.Statistics.UserActivityId, StepId = x.StepId, Description = x.Description, Status = x.Status, TimeElapse = x.Statistics.StatisticTimeElapsed, CorrectSteps = x.StepsCorrects, WrongSteps = x.StepsIncorrects }).FirstOrDefault(x => x.UserActivityId == useractivityid); //!= null ? Context.StatisticsDetail.OrderByDescending(x => x.StatisticDetailId).FirstOrDefault(x => x.Statistics.UserActivityId == useractivityid) : null;
                 }
                 response.Error = false;
                 response.Message = "SUCCESS";

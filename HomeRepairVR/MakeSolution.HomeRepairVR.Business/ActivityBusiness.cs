@@ -125,12 +125,10 @@ namespace MakeSolution.HomeRepairVR.Business
                     var userActivity = Context.UserActivity.FirstOrDefault(x => x.UserId == UsuarioId && x.ActivityId == ActivityId);
                     var statistics = Context.Statistics.FirstOrDefault(x => x.UserActivityId == userActivity.UserActivityId);
         
-                    statisticsEntity.Foto = userActivity.Activity.ActivityUrlPicture;
                     statisticsEntity.Titulo = userActivity.Activity.ActivityName;
                     statisticsEntity.Correctas = Context.StatisticsDetail.Where(x=>x.StatisticsId == statistics.StatisticsId && x.Status == "COR").Count();
                     statisticsEntity.Incorrectas = Context.StatisticsDetail.Where(x => x.StatisticsId == statistics.StatisticsId && x.Status == "ERR").Count(); ;
                     statisticsEntity.TiempoTranscurrido = Context.Statistics.FirstOrDefault(x=>x.UserActivityId == userActivity.UserActivityId).StatisticTimeElapsed;
-                    statisticsEntity.Pasos = Context.StatisticsDetail.OrderByDescending(x => x.StatisticDetailId).FirstOrDefault(x => x.StatisticsId == statistics.StatisticsId) != null ? Context.StatisticsDetail.OrderByDescending(x=>x.StatisticDetailId).FirstOrDefault(x => x.StatisticsId == statistics.StatisticsId).Step.StepName : "-";
                     ts.Complete();
                 }
                 response.Data = statisticsEntity;
@@ -145,6 +143,63 @@ namespace MakeSolution.HomeRepairVR.Business
             }
             return response;
         }
-        
+        public ResponseEntity<List<StatisticsEntity>> ListStatistics(Int32? UsuarioId, Int32? ActivityId)
+        {
+            ResponseEntity<List<StatisticsEntity>> response = new ResponseEntity<List<StatisticsEntity>>();
+            try
+            {
+                List<StatisticsEntity> listStatistics = new List<StatisticsEntity>();
+                using (var ts = new TransactionScope())
+                    {
+                    listStatistics = Context.Statistics.Where(x => x.UserActivity.UserId == UsuarioId && x.UserActivity.ActivityId == ActivityId).Select(x=> new StatisticsEntity {Correctas = x.StatisticsDetail.OrderByDescending(y=>y.StatisticDetailId).FirstOrDefault().StepsCorrects, Incorrectas = x.StatisticsDetail.OrderByDescending(y=>y.StatisticDetailId).FirstOrDefault().StepsIncorrects, Titulo = x.UserActivity.Activity.ActivityName, TiempoTranscurrido = x.StatisticTimeElapsed } ).ToList();
+                //    var userActivity = Context.UserActivity.FirstOrDefault(x => x.UserId == UsuarioId && x.ActivityId == ActivityId);
+                //    var statistics = Context.Statistics.FirstOrDefault(x => x.UserActivityId == userActivity.UserActivityId);
+                //    listStatistics = Context.UserActivity.Where(x => x.UserId == UsuarioId).Where(x => x.ActivityId == ActivityId).Select(x => new StatisticsEntity
+                //    { 
+                //        Foto = x.Activity.ActivityUrlPicture,
+                //        Titulo = x.Activity.ActivityName,                       
+                //        Correctas = Context.StatisticsDetail.Where(y => y.StatisticsId == statistics.StatisticsId && y.Status == "COR").Count(),
+                //        Incorrectas = Context.StatisticsDetail.Where(y => y.StatisticsId == statistics.StatisticsId && y.Status == "ERR").Count(), 
+                //        TiempoTranscurrido = Context.Statistics.FirstOrDefault(y => y.UserActivityId == userActivity.UserActivityId).StatisticTimeElapsed,
+                //        Pasos = Context.StatisticsDetail.OrderByDescending(y => y.StatisticDetailId).FirstOrDefault(y => y.StatisticsId == statistics.StatisticsId) != null ? Context.StatisticsDetail.OrderByDescending(y => y.StatisticDetailId).FirstOrDefault(y => y.StatisticsId == statistics.StatisticsId).Step.StepName : "-",
+                //    }).ToList();
+                    ts.Complete();
+                }
+                response.Data = listStatistics;
+                response.Error = false;
+                response.Message = "SUCCESS";
+            }
+            catch (Exception ex)
+            {
+                response.Data = null;
+                response.Error = true;
+                response.Message = "ERROR: " + ex.Message;
+            }
+            return response;
+        }
+        public ResponseEntity<List<StatisticDetailEntity>> ListStatisticsDetail(Int32? StatisticId)
+        {
+            ResponseEntity<List<StatisticDetailEntity>> response = new ResponseEntity<List<StatisticDetailEntity>>();
+            try
+            {
+                List<StatisticDetailEntity> listStatisticsDetail = new List<StatisticDetailEntity>();
+                using (var ts = new TransactionScope())
+                {
+                    listStatisticsDetail = Context.StatisticsDetail.Where(x => x.StatisticsId == StatisticId).Select(x => new StatisticDetailEntity { StatusActivity = x.StatusActivity, DateCreate = x.DateCreate, Description = x.Description, StatisticTimeElapsed = x.StatisticTimeElapsed, StepsCorrects = x.StepsCorrects, StepIncorrects = x.StepsIncorrects }).ToList();
+                    ts.Complete();
+                }
+                response.Data = listStatisticsDetail;
+                response.Error = false;
+                response.Message = "SUCCESS";
+            }
+            catch (Exception ex)
+            {
+                response.Data = null;
+                response.Error = true;
+                response.Message = "ERROR: " + ex.Message;
+            }
+            return response;
+        }
+
     }
 }

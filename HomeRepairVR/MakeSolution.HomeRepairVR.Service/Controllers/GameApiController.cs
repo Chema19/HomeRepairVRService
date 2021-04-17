@@ -1,10 +1,6 @@
 ﻿using MakeSolution.HomeRepairVR.Business;
 using MakeSolution.HomeRepairVR.Entity.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace MakeSolution.HomeRepairVR.Service.Controllers
@@ -13,7 +9,7 @@ namespace MakeSolution.HomeRepairVR.Service.Controllers
     {
         [HttpPost]
         [Route("apigames/savegames")]
-        public IHttpActionResult SaveGames(SaveGameEntity model)
+        public IHttpActionResult SaveGames(SaveLoadGameEntity model)
         {
             try
             {
@@ -48,7 +44,7 @@ namespace MakeSolution.HomeRepairVR.Service.Controllers
             try
             {
                 GameBusiness gameBusiness = new GameBusiness();
-                ResponseEntity<String> response = gameBusiness.ChargeDoneGame(useractivityid);
+                ResponseEntity<SaveLoadGameEntity> response = gameBusiness.ChargeDoneGame(useractivityid);
                 return Ok(response);
             }
             catch (Exception ex)
