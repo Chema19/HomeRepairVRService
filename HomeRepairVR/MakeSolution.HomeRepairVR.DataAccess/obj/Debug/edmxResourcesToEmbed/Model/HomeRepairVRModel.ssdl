@@ -58,6 +58,7 @@
     <Property Name="StepsCorrects" Type="int" />
     <Property Name="StepsIncorrects" Type="int" />
     <Property Name="StatusActivity" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="StepTutorial" Type="int" />
   </EntityType>
   <EntityType Name="Step">
     <Key>
@@ -69,6 +70,16 @@
     <Property Name="StepDescription" Type="varchar(max)" Nullable="false" />
     <Property Name="StepTimeAverage" Type="int" Nullable="false" />
     <Property Name="ActivityId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -194,6 +205,7 @@
     <EntitySet Name="Statistics" EntityType="Self.Statistics" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StatisticsDetail" EntityType="Self.StatisticsDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Step" EntityType="Self.Step" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserActivity" EntityType="Self.UserActivity" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ActivityMaterial_Activity" Association="Self.FK_ActivityMaterial_Activity">

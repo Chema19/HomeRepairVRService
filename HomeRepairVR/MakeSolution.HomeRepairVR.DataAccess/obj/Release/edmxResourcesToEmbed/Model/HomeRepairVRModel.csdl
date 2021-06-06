@@ -91,6 +91,7 @@
     <Property Name="StatisticTimeElapsed" Type="Int32" Nullable="false" />
     <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="DateUpdate" Type="DateTime" Precision="3" />
+    <Property Name="ProjectNameSaved" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="UserActivity" Relationship="BDHomeRepairVRModel.FK_Statistics_UserActivity" FromRole="Statistics" ToRole="UserActivity" />
     <NavigationProperty Name="StatisticsDetail" Relationship="BDHomeRepairVRModel.FK_StatisticsDetail_Statistics" FromRole="Statistics" ToRole="StatisticsDetail" />
   </EntityType>
@@ -100,10 +101,15 @@
     </Key>
     <Property Name="StatisticDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="StatisticsId" Type="Int32" Nullable="false" />
-    <Property Name="StepId" Type="Int32" Nullable="false" />
+    <Property Name="StepId" Type="Int32" />
     <Property Name="Status" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
     <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StatisticTimeElapsed" Type="Int32" Nullable="false" />
+    <Property Name="StepsCorrects" Type="Int32" />
+    <Property Name="StepsIncorrects" Type="Int32" />
+    <Property Name="StatusActivity" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="StepTutorial" Type="Int32" />
     <NavigationProperty Name="Statistics" Relationship="BDHomeRepairVRModel.FK_StatisticsDetail_Statistics" FromRole="StatisticsDetail" ToRole="Statistics" />
     <NavigationProperty Name="Step" Relationship="BDHomeRepairVRModel.FK_StatisticsDetail_Step" FromRole="StatisticsDetail" ToRole="Step" />
   </EntityType>
@@ -228,7 +234,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_StatisticsDetail_Step">
-    <End Type="BDHomeRepairVRModel.Step" Role="Step" Multiplicity="1" />
+    <End Type="BDHomeRepairVRModel.Step" Role="Step" Multiplicity="0..1" />
     <End Type="BDHomeRepairVRModel.StatisticsDetail" Role="StatisticsDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Step">

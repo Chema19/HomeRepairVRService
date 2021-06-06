@@ -40,6 +40,7 @@
     <EntitySetMapping Name="Statistics">
       <EntityTypeMapping TypeName="BDHomeRepairVRModel.Statistics">
         <MappingFragment StoreEntitySet="Statistics">
+          <ScalarProperty Name="ProjectNameSaved" ColumnName="ProjectNameSaved" />
           <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
           <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
           <ScalarProperty Name="StatisticTimeElapsed" ColumnName="StatisticTimeElapsed" />
@@ -51,6 +52,11 @@
     <EntitySetMapping Name="StatisticsDetail">
       <EntityTypeMapping TypeName="BDHomeRepairVRModel.StatisticsDetail">
         <MappingFragment StoreEntitySet="StatisticsDetail">
+          <ScalarProperty Name="StepTutorial" ColumnName="StepTutorial" />
+          <ScalarProperty Name="StatusActivity" ColumnName="StatusActivity" />
+          <ScalarProperty Name="StepsIncorrects" ColumnName="StepsIncorrects" />
+          <ScalarProperty Name="StepsCorrects" ColumnName="StepsCorrects" />
+          <ScalarProperty Name="StatisticTimeElapsed" ColumnName="StatisticTimeElapsed" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
           <ScalarProperty Name="Status" ColumnName="Status" />

@@ -31,6 +31,7 @@ namespace MakeSolution.HomeRepairVR.DataAccess.Model
         public virtual DbSet<Statistics> Statistics { get; set; }
         public virtual DbSet<StatisticsDetail> StatisticsDetail { get; set; }
         public virtual DbSet<Step> Step { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserActivity> UserActivity { get; set; }
     }

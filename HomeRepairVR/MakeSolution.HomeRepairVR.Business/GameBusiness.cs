@@ -24,7 +24,7 @@ namespace MakeSolution.HomeRepairVR.Business
                     var statistics = Context.Statistics.FirstOrDefault(x => x.UserActivityId == model.UserActivityId);
                     var statisticsDetail = new StatisticsDetail();
 
-                    statistics.StatisticTimeElapsed = statistics.StatisticTimeElapsed + model.TimeElapse;
+                    statistics.StatisticTimeElapsed = (statistics != null ? statistics.StatisticTimeElapsed : 0) + model.TimeElapse;
                     statistics.DateUpdate = DateTime.Now;
 
                     Context.StatisticsDetail.Add(statisticsDetail);
@@ -37,6 +37,8 @@ namespace MakeSolution.HomeRepairVR.Business
                     statisticsDetail.StepsCorrects = model.CorrectSteps;
                     statisticsDetail.StepsIncorrects = model.WrongSteps;
                     statisticsDetail.StatusActivity = model.StatusActivity;
+                    statisticsDetail.StepTutorial = model.StepTutorial;
+                    statisticsDetail.StatisticTimeElapsed = model.TimeElapse;
                     Context.SaveChanges();
                     ts.Complete();
                 }
@@ -80,6 +82,22 @@ namespace MakeSolution.HomeRepairVR.Business
                         statistic.UserActivityId = userActivity.UserActivityId;
                         statistic.StatisticTimeElapsed = 0;
                         statistic.DateCreate = DateTime.Now;
+                        statistic.ProjectNameSaved = "START";
+
+                        Context.SaveChanges();
+
+                        var statisticsDetail = new StatisticsDetail();
+
+                        Context.StatisticsDetail.Add(statisticsDetail);
+
+                        statisticsDetail.StepTutorial = 1;
+                        statisticsDetail.Status = "COR";
+                        statisticsDetail.StatisticsId = statistic.StatisticsId;
+                        statisticsDetail.DateCreate = DateTime.Now;
+                        statisticsDetail.StatisticTimeElapsed = 0;
+                        statisticsDetail.StatusActivity = "COR";
+                        statisticsDetail.StepsIncorrects = 0;
+                        statisticsDetail.StepsCorrects = 0;
 
                         Context.SaveChanges();
 
@@ -89,6 +107,37 @@ namespace MakeSolution.HomeRepairVR.Business
                         response.Data = selectGameResponse;
                     }
                     else {
+
+                        var StatisticsDetail = Context.StatisticsDetail.OrderByDescending(x => x.StatisticDetailId).FirstOrDefault(x => x.Statistics.UserActivityId == userActivyExist.UserActivityId);
+
+                        if (StatisticsDetail.StatusActivity == "FIN") {
+                            var statistic = new Statistics();
+
+                            Context.Statistics.Add(statistic);
+
+                            statistic.UserActivityId = userActivyExist.UserActivityId;
+                            statistic.StatisticTimeElapsed = 0;
+                            statistic.DateCreate = DateTime.Now;
+                            statistic.ProjectNameSaved = "START";
+
+                            Context.SaveChanges();
+
+                            var statisticsDetail = new StatisticsDetail();
+
+                            Context.StatisticsDetail.Add(statisticsDetail);
+
+                            statisticsDetail.StepTutorial = 1;
+                            statisticsDetail.Status = "COR";
+                            statisticsDetail.StatisticsId = statistic.StatisticsId;
+                            statisticsDetail.DateCreate = DateTime.Now;
+                            statisticsDetail.StatisticTimeElapsed = 0;
+                            statisticsDetail.StatusActivity = "COR";
+                            statisticsDetail.StepsIncorrects = 0;
+                            statisticsDetail.StepsCorrects = 0;
+
+                            Context.SaveChanges();
+                        }
+
                         selectGameResponse.UserActivityId = userActivyExist.UserActivityId;
                         selectGameResponse.Message = ConstantHelper.MESSAGE.SUCCESS_MESSAGE_CHARGE;
                     }
@@ -113,7 +162,15 @@ namespace MakeSolution.HomeRepairVR.Business
             {
                 using (var ts = new TransactionScope())
                 {
-                    response.Data = Context.StatisticsDetail.OrderByDescending(x => x.StatisticDetailId).Select(x => new SaveLoadGameEntity { UserActivityId = x.Statistics.UserActivityId, StepId = x.StepId, Description = x.Description, Status = x.Status, TimeElapse = x.Statistics.StatisticTimeElapsed, CorrectSteps = x.StepsCorrects, WrongSteps = x.StepsIncorrects }).FirstOrDefault(x => x.UserActivityId == useractivityid); //!= null ? Context.StatisticsDetail.OrderByDescending(x => x.StatisticDetailId).FirstOrDefault(x => x.Statistics.UserActivityId == useractivityid) : null;
+                    response.Data = Context.StatisticsDetail.OrderByDescending(x => x.StatisticDetailId).Select(x => new SaveLoadGameEntity {
+                        UserActivityId = x.Statistics.UserActivityId, 
+                        StepId = x.StepId, 
+                        Description = x.Description, 
+                        Status = x.Status, 
+                        TimeElapse = x.Statistics.StatisticTimeElapsed, 
+                        CorrectSteps = x.StepsCorrects, 
+                        WrongSteps = x.StepsIncorrects,
+                        StepTutorial = x.StepTutorial }).FirstOrDefault(x => x.UserActivityId == useractivityid); //!= null ? Context.StatisticsDetail.OrderByDescending(x => x.StatisticDetailId).FirstOrDefault(x => x.Statistics.UserActivityId == useractivityid) : null;
                 }
                 response.Error = false;
                 response.Message = "SUCCESS";

@@ -24,6 +24,7 @@ namespace MakeSolution.HomeRepairVR.DataAccess.Model
         public Nullable<int> StepsCorrects { get; set; }
         public Nullable<int> StepsIncorrects { get; set; }
         public string StatusActivity { get; set; }
+        public Nullable<int> StepTutorial { get; set; }
     
         public virtual Statistics Statistics { get; set; }
         public virtual Step Step { get; set; }

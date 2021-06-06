@@ -86,6 +86,9 @@
     <Compile Include="Model\Step.cs">
       <DependentUpon>HomeRepairVRModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\sysdiagrams.cs">
+      <DependentUpon>HomeRepairVRModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\User.cs">
       <DependentUpon>HomeRepairVRModel.tt</DependentUpon>
     </Compile>

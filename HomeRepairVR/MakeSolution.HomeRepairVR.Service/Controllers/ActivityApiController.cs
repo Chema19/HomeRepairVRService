@@ -75,7 +75,7 @@ namespace MakeSolution.HomeRepairVR.Service.Controllers
         }
         [HttpGet]
         [Route("liststatisticsactivities/{activityId}/users/{usuarioId}")]
-        public IHttpActionResult ListStatistics(int? usuarioId, int? activityId)
+        public IHttpActionResult ListStatistics(int? activityId, int? usuarioId)
         {
             try
             {

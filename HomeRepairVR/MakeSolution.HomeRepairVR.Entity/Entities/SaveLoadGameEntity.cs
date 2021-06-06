@@ -16,5 +16,6 @@ namespace MakeSolution.HomeRepairVR.Entity.Entities
         public Int32? CorrectSteps { set; get; }
         public Int32? WrongSteps { set; get; }
         public String StatusActivity { set; get; }
+        public int? StepTutorial { set; get; }
     }
 }

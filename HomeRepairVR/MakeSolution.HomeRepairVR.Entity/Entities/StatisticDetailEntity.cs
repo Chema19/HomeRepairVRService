@@ -14,7 +14,7 @@ namespace MakeSolution.HomeRepairVR.Entity.Entities
         public Int32 StatisticTimeElapsed { set; get; }
         public Int32? StepsCorrects { set; get; }
         public Int32? StepIncorrects { set; get; }
-
+        public int? StepTutorial { set; get; }
 
     }
 }

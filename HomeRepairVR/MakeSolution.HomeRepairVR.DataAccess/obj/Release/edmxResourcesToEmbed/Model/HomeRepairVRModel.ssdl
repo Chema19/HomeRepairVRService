@@ -42,6 +42,7 @@
     <Property Name="StatisticTimeElapsed" Type="int" Nullable="false" />
     <Property Name="DateCreate" Type="datetime" Nullable="false" />
     <Property Name="DateUpdate" Type="datetime" />
+    <Property Name="ProjectNameSaved" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="StatisticsDetail">
     <Key>
@@ -49,10 +50,15 @@
     </Key>
     <Property Name="StatisticDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StatisticsId" Type="int" Nullable="false" />
-    <Property Name="StepId" Type="int" Nullable="false" />
+    <Property Name="StepId" Type="int" />
     <Property Name="Status" Type="varchar" MaxLength="3" Nullable="false" />
     <Property Name="DateCreate" Type="datetime" Nullable="false" />
-    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="StatisticTimeElapsed" Type="int" Nullable="false" />
+    <Property Name="StepsCorrects" Type="int" />
+    <Property Name="StepsIncorrects" Type="int" />
+    <Property Name="StatusActivity" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="StepTutorial" Type="int" />
   </EntityType>
   <EntityType Name="Step">
     <Key>
@@ -145,7 +151,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_StatisticsDetail_Step">
-    <End Role="Step" Type="Self.Step" Multiplicity="1" />
+    <End Role="Step" Type="Self.Step" Multiplicity="0..1" />
     <End Role="StatisticsDetail" Type="Self.StatisticsDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Step">

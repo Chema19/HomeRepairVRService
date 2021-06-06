@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BDHomeRepairVRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BDHomeRepairVRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="ActivityId" />
@@ -63,6 +63,7 @@
           <Property Name="StepsCorrects" Type="int" />
           <Property Name="StepsIncorrects" Type="int" />
           <Property Name="StatusActivity" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="StepTutorial" Type="int" />
         </EntityType>
         <EntityType Name="Step">
           <Key>
@@ -74,6 +75,16 @@
           <Property Name="StepDescription" Type="varchar(max)" Nullable="false" />
           <Property Name="StepTimeAverage" Type="int" Nullable="false" />
           <Property Name="ActivityId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -199,6 +210,7 @@
           <EntitySet Name="Statistics" EntityType="Self.Statistics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StatisticsDetail" EntityType="Self.StatisticsDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Step" EntityType="Self.Step" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserActivity" EntityType="Self.UserActivity" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ActivityMaterial_Activity" Association="Self.FK_ActivityMaterial_Activity">
@@ -234,26 +246,68 @@
             <End Role="UserActivity" EntitySet="UserActivity" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BDHomeRepairVRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BDHomeRepairVREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activity" EntityType="BDHomeRepairVRModel.Activity" />
+          <EntitySet Name="ActivityMaterial" EntityType="BDHomeRepairVRModel.ActivityMaterial" />
+          <EntitySet Name="Material" EntityType="BDHomeRepairVRModel.Material" />
+          <EntitySet Name="Statistics" EntityType="BDHomeRepairVRModel.Statistics" />
+          <EntitySet Name="StatisticsDetail" EntityType="BDHomeRepairVRModel.StatisticsDetail" />
+          <EntitySet Name="Step" EntityType="BDHomeRepairVRModel.Step" />
+          <EntitySet Name="sysdiagrams" EntityType="BDHomeRepairVRModel.sysdiagrams" />
+          <EntitySet Name="User" EntityType="BDHomeRepairVRModel.User" />
+          <EntitySet Name="UserActivity" EntityType="BDHomeRepairVRModel.UserActivity" />
+          <AssociationSet Name="FK_ActivityMaterial_Activity" Association="BDHomeRepairVRModel.FK_ActivityMaterial_Activity">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="ActivityMaterial" EntitySet="ActivityMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Step_Activity" Association="BDHomeRepairVRModel.FK_Step_Activity">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="Step" EntitySet="Step" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserActivity_Activity" Association="BDHomeRepairVRModel.FK_UserActivity_Activity">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="UserActivity" EntitySet="UserActivity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityMaterial_Material" Association="BDHomeRepairVRModel.FK_ActivityMaterial_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="ActivityMaterial" EntitySet="ActivityMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Statistics_UserActivity" Association="BDHomeRepairVRModel.FK_Statistics_UserActivity">
+            <End Role="UserActivity" EntitySet="UserActivity" />
+            <End Role="Statistics" EntitySet="Statistics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatisticsDetail_Statistics" Association="BDHomeRepairVRModel.FK_StatisticsDetail_Statistics">
+            <End Role="Statistics" EntitySet="Statistics" />
+            <End Role="StatisticsDetail" EntitySet="StatisticsDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatisticsDetail_Step" Association="BDHomeRepairVRModel.FK_StatisticsDetail_Step">
+            <End Role="Step" EntitySet="Step" />
+            <End Role="StatisticsDetail" EntitySet="StatisticsDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserActivity_User" Association="BDHomeRepairVRModel.FK_UserActivity_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserActivity" EntitySet="UserActivity" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="ActivityId" />
           </Key>
           <Property Name="ActivityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ActivityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ActivityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ActivityTime" Type="Int32" Nullable="false" />
-          <Property Name="ActivityUrlPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ActivityUrlPicture" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ActivityDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ActivityDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DateUpdate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Scene" Type="Int32" />
-          <NavigationProperty Name="ActivityMaterial" Relationship="Self.FK_ActivityMaterial_Activity" FromRole="Activity" ToRole="ActivityMaterial" />
-          <NavigationProperty Name="Step" Relationship="Self.FK_Step_Activity" FromRole="Activity" ToRole="Step" />
-          <NavigationProperty Name="UserActivity" Relationship="Self.FK_UserActivity_Activity" FromRole="Activity" ToRole="UserActivity" />
+          <NavigationProperty Name="ActivityMaterial" Relationship="BDHomeRepairVRModel.FK_ActivityMaterial_Activity" FromRole="Activity" ToRole="ActivityMaterial" />
+          <NavigationProperty Name="Step" Relationship="BDHomeRepairVRModel.FK_Step_Activity" FromRole="Activity" ToRole="Step" />
+          <NavigationProperty Name="UserActivity" Relationship="BDHomeRepairVRModel.FK_UserActivity_Activity" FromRole="Activity" ToRole="UserActivity" />
         </EntityType>
         <EntityType Name="ActivityMaterial">
           <Key>
@@ -264,19 +318,19 @@
           <Property Name="MaterialId" Type="Int32" Nullable="false" />
           <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DateUpdate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Activity" Relationship="Self.FK_ActivityMaterial_Activity" FromRole="ActivityMaterial" ToRole="Activity" />
-          <NavigationProperty Name="Material" Relationship="Self.FK_ActivityMaterial_Material" FromRole="ActivityMaterial" ToRole="Material" />
+          <NavigationProperty Name="Activity" Relationship="BDHomeRepairVRModel.FK_ActivityMaterial_Activity" FromRole="ActivityMaterial" ToRole="Activity" />
+          <NavigationProperty Name="Material" Relationship="BDHomeRepairVRModel.FK_ActivityMaterial_Material" FromRole="ActivityMaterial" ToRole="Material" />
         </EntityType>
         <EntityType Name="Material">
           <Key>
             <PropertyRef Name="MaterialId" />
           </Key>
           <Property Name="MaterialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MaterialName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MaterialDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaterialName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MaterialDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DateUpdate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="ActivityMaterial" Relationship="Self.FK_ActivityMaterial_Material" FromRole="Material" ToRole="ActivityMaterial" />
+          <NavigationProperty Name="ActivityMaterial" Relationship="BDHomeRepairVRModel.FK_ActivityMaterial_Material" FromRole="Material" ToRole="ActivityMaterial" />
         </EntityType>
         <EntityType Name="Statistics">
           <Key>
@@ -287,9 +341,9 @@
           <Property Name="StatisticTimeElapsed" Type="Int32" Nullable="false" />
           <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DateUpdate" Type="DateTime" Precision="3" />
-          <Property Name="ProjectNameSaved" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="UserActivity" Relationship="Self.FK_Statistics_UserActivity" FromRole="Statistics" ToRole="UserActivity" />
-          <NavigationProperty Name="StatisticsDetail" Relationship="Self.FK_StatisticsDetail_Statistics" FromRole="Statistics" ToRole="StatisticsDetail" />
+          <Property Name="ProjectNameSaved" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserActivity" Relationship="BDHomeRepairVRModel.FK_Statistics_UserActivity" FromRole="Statistics" ToRole="UserActivity" />
+          <NavigationProperty Name="StatisticsDetail" Relationship="BDHomeRepairVRModel.FK_StatisticsDetail_Statistics" FromRole="Statistics" ToRole="StatisticsDetail" />
         </EntityType>
         <EntityType Name="StatisticsDetail">
           <Key>
@@ -298,40 +352,51 @@
           <Property Name="StatisticDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StatisticsId" Type="Int32" Nullable="false" />
           <Property Name="StepId" Type="Int32" />
-          <Property Name="Status" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="StatisticTimeElapsed" Type="Int32" Nullable="false" />
           <Property Name="StepsCorrects" Type="Int32" />
           <Property Name="StepsIncorrects" Type="Int32" />
-          <Property Name="StatusActivity" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Statistics" Relationship="Self.FK_StatisticsDetail_Statistics" FromRole="StatisticsDetail" ToRole="Statistics" />
-          <NavigationProperty Name="Step" Relationship="Self.FK_StatisticsDetail_Step" FromRole="StatisticsDetail" ToRole="Step" />
+          <Property Name="StatusActivity" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="StepTutorial" Type="Int32" />
+          <NavigationProperty Name="Statistics" Relationship="BDHomeRepairVRModel.FK_StatisticsDetail_Statistics" FromRole="StatisticsDetail" ToRole="Statistics" />
+          <NavigationProperty Name="Step" Relationship="BDHomeRepairVRModel.FK_StatisticsDetail_Step" FromRole="StatisticsDetail" ToRole="Step" />
         </EntityType>
         <EntityType Name="Step">
           <Key>
             <PropertyRef Name="StepId" />
           </Key>
           <Property Name="StepId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StepName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StepName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="StepNumber" Type="Int32" Nullable="false" />
-          <Property Name="StepDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StepDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="StepTimeAverage" Type="Int32" Nullable="false" />
           <Property Name="ActivityId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Activity" Relationship="Self.FK_Step_Activity" FromRole="Step" ToRole="Activity" />
-          <NavigationProperty Name="StatisticsDetail" Relationship="Self.FK_StatisticsDetail_Step" FromRole="Step" ToRole="StatisticsDetail" />
+          <NavigationProperty Name="Activity" Relationship="BDHomeRepairVRModel.FK_Step_Activity" FromRole="Step" ToRole="Activity" />
+          <NavigationProperty Name="StatisticsDetail" Relationship="BDHomeRepairVRModel.FK_StatisticsDetail_Step" FromRole="Step" ToRole="StatisticsDetail" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserUrlPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserUrlPicture" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Status" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="DateUpdate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="UserActivity" Relationship="Self.FK_UserActivity_User" FromRole="User" ToRole="UserActivity" />
+          <NavigationProperty Name="UserActivity" Relationship="BDHomeRepairVRModel.FK_UserActivity_User" FromRole="User" ToRole="UserActivity" />
         </EntityType>
         <EntityType Name="UserActivity">
           <Key>
@@ -342,13 +407,13 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DateUpdate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Activity" Relationship="Self.FK_UserActivity_Activity" FromRole="UserActivity" ToRole="Activity" />
-          <NavigationProperty Name="Statistics" Relationship="Self.FK_Statistics_UserActivity" FromRole="UserActivity" ToRole="Statistics" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UserActivity_User" FromRole="UserActivity" ToRole="User" />
+          <NavigationProperty Name="Activity" Relationship="BDHomeRepairVRModel.FK_UserActivity_Activity" FromRole="UserActivity" ToRole="Activity" />
+          <NavigationProperty Name="Statistics" Relationship="BDHomeRepairVRModel.FK_Statistics_UserActivity" FromRole="UserActivity" ToRole="Statistics" />
+          <NavigationProperty Name="User" Relationship="BDHomeRepairVRModel.FK_UserActivity_User" FromRole="UserActivity" ToRole="User" />
         </EntityType>
         <Association Name="FK_ActivityMaterial_Activity">
-          <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
-          <End Role="ActivityMaterial" Type="Self.ActivityMaterial" Multiplicity="*" />
+          <End Type="BDHomeRepairVRModel.Activity" Role="Activity" Multiplicity="1" />
+          <End Type="BDHomeRepairVRModel.ActivityMaterial" Role="ActivityMaterial" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Activity">
               <PropertyRef Name="ActivityId" />
@@ -359,8 +424,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Step_Activity">
-          <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
-          <End Role="Step" Type="Self.Step" Multiplicity="*" />
+          <End Type="BDHomeRepairVRModel.Activity" Role="Activity" Multiplicity="1" />
+          <End Type="BDHomeRepairVRModel.Step" Role="Step" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Activity">
               <PropertyRef Name="ActivityId" />
@@ -371,8 +436,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserActivity_Activity">
-          <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
-          <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="*" />
+          <End Type="BDHomeRepairVRModel.Activity" Role="Activity" Multiplicity="1" />
+          <End Type="BDHomeRepairVRModel.UserActivity" Role="UserActivity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Activity">
               <PropertyRef Name="ActivityId" />
@@ -383,8 +448,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ActivityMaterial_Material">
-          <End Role="Material" Type="Self.Material" Multiplicity="1" />
-          <End Role="ActivityMaterial" Type="Self.ActivityMaterial" Multiplicity="*" />
+          <End Type="BDHomeRepairVRModel.Material" Role="Material" Multiplicity="1" />
+          <End Type="BDHomeRepairVRModel.ActivityMaterial" Role="ActivityMaterial" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Material">
               <PropertyRef Name="MaterialId" />
@@ -395,8 +460,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Statistics_UserActivity">
-          <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="1" />
-          <End Role="Statistics" Type="Self.Statistics" Multiplicity="*" />
+          <End Type="BDHomeRepairVRModel.UserActivity" Role="UserActivity" Multiplicity="1" />
+          <End Type="BDHomeRepairVRModel.Statistics" Role="Statistics" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserActivity">
               <PropertyRef Name="UserActivityId" />
@@ -407,8 +472,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StatisticsDetail_Statistics">
-          <End Role="Statistics" Type="Self.Statistics" Multiplicity="1" />
-          <End Role="StatisticsDetail" Type="Self.StatisticsDetail" Multiplicity="*" />
+          <End Type="BDHomeRepairVRModel.Statistics" Role="Statistics" Multiplicity="1" />
+          <End Type="BDHomeRepairVRModel.StatisticsDetail" Role="StatisticsDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Statistics">
               <PropertyRef Name="StatisticsId" />
@@ -419,8 +484,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StatisticsDetail_Step">
-          <End Role="Step" Type="Self.Step" Multiplicity="0..1" />
-          <End Role="StatisticsDetail" Type="Self.StatisticsDetail" Multiplicity="*" />
+          <End Type="BDHomeRepairVRModel.Step" Role="Step" Multiplicity="0..1" />
+          <End Type="BDHomeRepairVRModel.StatisticsDetail" Role="StatisticsDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Step">
               <PropertyRef Name="StepId" />
@@ -431,8 +496,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserActivity_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="*" />
+          <End Type="BDHomeRepairVRModel.User" Role="User" Multiplicity="1" />
+          <End Type="BDHomeRepairVRModel.UserActivity" Role="UserActivity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserId" />
@@ -442,49 +507,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BDHomeRepairVREntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Activity" EntityType="Self.Activity" />
-          <EntitySet Name="ActivityMaterial" EntityType="Self.ActivityMaterial" />
-          <EntitySet Name="Material" EntityType="Self.Material" />
-          <EntitySet Name="Statistics" EntityType="Self.Statistics" />
-          <EntitySet Name="StatisticsDetail" EntityType="Self.StatisticsDetail" />
-          <EntitySet Name="Step" EntityType="Self.Step" />
-          <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="UserActivity" EntityType="Self.UserActivity" />
-          <AssociationSet Name="FK_ActivityMaterial_Activity" Association="Self.FK_ActivityMaterial_Activity">
-            <End Role="Activity" EntitySet="Activity" />
-            <End Role="ActivityMaterial" EntitySet="ActivityMaterial" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Step_Activity" Association="Self.FK_Step_Activity">
-            <End Role="Activity" EntitySet="Activity" />
-            <End Role="Step" EntitySet="Step" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserActivity_Activity" Association="Self.FK_UserActivity_Activity">
-            <End Role="Activity" EntitySet="Activity" />
-            <End Role="UserActivity" EntitySet="UserActivity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ActivityMaterial_Material" Association="Self.FK_ActivityMaterial_Material">
-            <End Role="Material" EntitySet="Material" />
-            <End Role="ActivityMaterial" EntitySet="ActivityMaterial" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Statistics_UserActivity" Association="Self.FK_Statistics_UserActivity">
-            <End Role="UserActivity" EntitySet="UserActivity" />
-            <End Role="Statistics" EntitySet="Statistics" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StatisticsDetail_Statistics" Association="Self.FK_StatisticsDetail_Statistics">
-            <End Role="Statistics" EntitySet="Statistics" />
-            <End Role="StatisticsDetail" EntitySet="StatisticsDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StatisticsDetail_Step" Association="Self.FK_StatisticsDetail_Step">
-            <End Role="Step" EntitySet="Step" />
-            <End Role="StatisticsDetail" EntitySet="StatisticsDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserActivity_User" Association="Self.FK_UserActivity_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserActivity" EntitySet="UserActivity" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -493,99 +516,111 @@
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="BDHomeRepairVRModel.Activity">
               <MappingFragment StoreEntitySet="Activity">
-                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
-                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
-                <ScalarProperty Name="ActivityTime" ColumnName="ActivityTime" />
-                <ScalarProperty Name="ActivityUrlPicture" ColumnName="ActivityUrlPicture" />
-                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
-                <ScalarProperty Name="ActivityDescription" ColumnName="ActivityDescription" />
-                <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
                 <ScalarProperty Name="Scene" ColumnName="Scene" />
+                <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+                <ScalarProperty Name="ActivityDescription" ColumnName="ActivityDescription" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="ActivityUrlPicture" ColumnName="ActivityUrlPicture" />
+                <ScalarProperty Name="ActivityTime" ColumnName="ActivityTime" />
+                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ActivityMaterial">
             <EntityTypeMapping TypeName="BDHomeRepairVRModel.ActivityMaterial">
               <MappingFragment StoreEntitySet="ActivityMaterial">
-                <ScalarProperty Name="ActivityMaterialId" ColumnName="ActivityMaterialId" />
-                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
-                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
-                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
                 <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="ActivityMaterialId" ColumnName="ActivityMaterialId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Material">
             <EntityTypeMapping TypeName="BDHomeRepairVRModel.Material">
               <MappingFragment StoreEntitySet="Material">
-                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
-                <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
-                <ScalarProperty Name="MaterialDescription" ColumnName="MaterialDescription" />
-                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
                 <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="MaterialDescription" ColumnName="MaterialDescription" />
+                <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Statistics">
             <EntityTypeMapping TypeName="BDHomeRepairVRModel.Statistics">
               <MappingFragment StoreEntitySet="Statistics">
-                <ScalarProperty Name="StatisticsId" ColumnName="StatisticsId" />
-                <ScalarProperty Name="UserActivityId" ColumnName="UserActivityId" />
-                <ScalarProperty Name="StatisticTimeElapsed" ColumnName="StatisticTimeElapsed" />
-                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
-                <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
                 <ScalarProperty Name="ProjectNameSaved" ColumnName="ProjectNameSaved" />
+                <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="StatisticTimeElapsed" ColumnName="StatisticTimeElapsed" />
+                <ScalarProperty Name="UserActivityId" ColumnName="UserActivityId" />
+                <ScalarProperty Name="StatisticsId" ColumnName="StatisticsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StatisticsDetail">
             <EntityTypeMapping TypeName="BDHomeRepairVRModel.StatisticsDetail">
               <MappingFragment StoreEntitySet="StatisticsDetail">
-                <ScalarProperty Name="StatisticDetailId" ColumnName="StatisticDetailId" />
-                <ScalarProperty Name="StatisticsId" ColumnName="StatisticsId" />
-                <ScalarProperty Name="StepId" ColumnName="StepId" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="StatisticTimeElapsed" ColumnName="StatisticTimeElapsed" />
-                <ScalarProperty Name="StepsCorrects" ColumnName="StepsCorrects" />
-                <ScalarProperty Name="StepsIncorrects" ColumnName="StepsIncorrects" />
+                <ScalarProperty Name="StepTutorial" ColumnName="StepTutorial" />
                 <ScalarProperty Name="StatusActivity" ColumnName="StatusActivity" />
+                <ScalarProperty Name="StepsIncorrects" ColumnName="StepsIncorrects" />
+                <ScalarProperty Name="StepsCorrects" ColumnName="StepsCorrects" />
+                <ScalarProperty Name="StatisticTimeElapsed" ColumnName="StatisticTimeElapsed" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StepId" ColumnName="StepId" />
+                <ScalarProperty Name="StatisticsId" ColumnName="StatisticsId" />
+                <ScalarProperty Name="StatisticDetailId" ColumnName="StatisticDetailId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Step">
             <EntityTypeMapping TypeName="BDHomeRepairVRModel.Step">
               <MappingFragment StoreEntitySet="Step">
-                <ScalarProperty Name="StepId" ColumnName="StepId" />
-                <ScalarProperty Name="StepName" ColumnName="StepName" />
-                <ScalarProperty Name="StepNumber" ColumnName="StepNumber" />
-                <ScalarProperty Name="StepDescription" ColumnName="StepDescription" />
-                <ScalarProperty Name="StepTimeAverage" ColumnName="StepTimeAverage" />
                 <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="StepTimeAverage" ColumnName="StepTimeAverage" />
+                <ScalarProperty Name="StepDescription" ColumnName="StepDescription" />
+                <ScalarProperty Name="StepNumber" ColumnName="StepNumber" />
+                <ScalarProperty Name="StepName" ColumnName="StepName" />
+                <ScalarProperty Name="StepId" ColumnName="StepId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BDHomeRepairVRModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="BDHomeRepairVRModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserUrlPicture" ColumnName="UserUrlPicture" />
-                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="UserUrlPicture" ColumnName="UserUrlPicture" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserActivity">
             <EntityTypeMapping TypeName="BDHomeRepairVRModel.UserActivity">
               <MappingFragment StoreEntitySet="UserActivity">
-                <ScalarProperty Name="UserActivityId" ColumnName="UserActivityId" />
-                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
                 <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="UserActivityId" ColumnName="UserActivityId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

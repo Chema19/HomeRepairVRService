@@ -10,3 +10,15 @@ C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeS
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Release\MakeSolution.HomeRepairVR.Helper.csproj.CopyComplete
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Release\MakeSolution.HomeRepairVR.Helper.dll
 C:\Users\USUARIO\Documents\HOME REPAIR VR\HomeReapirVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Release\MakeSolution.HomeRepairVR.Helper.pdb
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HOME REPAIR VR APLICATION\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Release\MakeSolution.HomeRepairVR.Helper.dll.config
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HOME REPAIR VR APLICATION\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Release\MakeSolution.HomeRepairVR.Helper.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HOME REPAIR VR APLICATION\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Release\MakeSolution.HomeRepairVR.Helper.pdb
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HOME REPAIR VR APLICATION\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Release\EntityFramework.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HOME REPAIR VR APLICATION\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HOME REPAIR VR APLICATION\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Release\EntityFramework.xml
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HOME REPAIR VR APLICATION\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HOME REPAIR VR APLICATION\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Release\MakeSolution.HomeRepairVR.Helper.csprojAssemblyReference.cache
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HOME REPAIR VR APLICATION\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Release\MakeSolution.HomeRepairVR.Helper.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HOME REPAIR VR APLICATION\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Release\MakeSolution.HomeRepairVR.Helper.csproj.CopyComplete
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HOME REPAIR VR APLICATION\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Release\MakeSolution.HomeRepairVR.Helper.dll
+C:\Users\USUARIO\Documents\HOME REPAIR VR\HOME REPAIR VR APLICATION\HomeRepairVRService\HomeRepairVR\MakeSolution.HomeRepairVR.Helper\obj\Release\MakeSolution.HomeRepairVR.Helper.pdb

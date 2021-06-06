@@ -5,22 +5,23 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="01973529f1214e97a52306a1edebc49d" Name="Diagram1">
-        <EntityTypeShape EntityType="BDHomeRepairVRModel.Activity" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDHomeRepairVRModel.ActivityMaterial" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDHomeRepairVRModel.Material" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDHomeRepairVRModel.Statistics" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDHomeRepairVRModel.StatisticsDetail" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDHomeRepairVRModel.Step" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDHomeRepairVRModel.User" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDHomeRepairVRModel.UserActivity" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
-        <AssociationConnector Association="BDHomeRepairVRModel.FK_ActivityMaterial_Activity" ManuallyRouted="false" />
-        <AssociationConnector Association="BDHomeRepairVRModel.FK_Step_Activity" ManuallyRouted="false" />
-        <AssociationConnector Association="BDHomeRepairVRModel.FK_UserActivity_Activity" ManuallyRouted="false" />
-        <AssociationConnector Association="BDHomeRepairVRModel.FK_ActivityMaterial_Material" ManuallyRouted="false" />
-        <AssociationConnector Association="BDHomeRepairVRModel.FK_Statistics_UserActivity" ManuallyRouted="false" />
-        <AssociationConnector Association="BDHomeRepairVRModel.FK_StatisticsDetail_Statistics" ManuallyRouted="false" />
-        <AssociationConnector Association="BDHomeRepairVRModel.FK_StatisticsDetail_Step" ManuallyRouted="false" />
-        <AssociationConnector Association="BDHomeRepairVRModel.FK_UserActivity_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BDHomeRepairVRModel.Activity" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BDHomeRepairVRModel.ActivityMaterial" Width="1.5" PointX="6" PointY="5.125" />
+        <EntityTypeShape EntityType="BDHomeRepairVRModel.Material" Width="1.5" PointX="3.75" PointY="16.25" />
+        <EntityTypeShape EntityType="BDHomeRepairVRModel.Statistics" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="BDHomeRepairVRModel.StatisticsDetail" Width="1.5" PointX="5.25" PointY="11" />
+        <EntityTypeShape EntityType="BDHomeRepairVRModel.Step" Width="1.5" PointX="3" PointY="11.375" />
+        <EntityTypeShape EntityType="BDHomeRepairVRModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BDHomeRepairVRModel.User" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="BDHomeRepairVRModel.UserActivity" Width="1.5" PointX="3" PointY="5" />
+        <AssociationConnector Association="BDHomeRepairVRModel.FK_ActivityMaterial_Activity" />
+        <AssociationConnector Association="BDHomeRepairVRModel.FK_Step_Activity" />
+        <AssociationConnector Association="BDHomeRepairVRModel.FK_UserActivity_Activity" />
+        <AssociationConnector Association="BDHomeRepairVRModel.FK_ActivityMaterial_Material" />
+        <AssociationConnector Association="BDHomeRepairVRModel.FK_Statistics_UserActivity" />
+        <AssociationConnector Association="BDHomeRepairVRModel.FK_StatisticsDetail_Statistics" />
+        <AssociationConnector Association="BDHomeRepairVRModel.FK_StatisticsDetail_Step" />
+        <AssociationConnector Association="BDHomeRepairVRModel.FK_UserActivity_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
